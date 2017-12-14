@@ -35,6 +35,123 @@ extern "C" {
 
 /*!
 ********************************************************************************
+* INLINE FUNCTIONS
+*******************************************************************************/
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+VOID
+vRtlListInitHead(KLIST_HEAD *ListHead)
+{
+	ListHead->Flink = ListHead->Blink = ListHead;
+}
+
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+BOOL
+vRtlListIsEmpty(KLIST_HEAD *ListHead)
+{
+	return (BOOL)(ListHead->Flink == ListHead);
+}
+
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+BOOL
+vRtlListRemoveElem(KLIST_ELEM *ListElem)
+{
+	KLIST_ELEM *NextElem;
+	KLIST_ELEM *PrevElem;
+
+	NextElem = ListElem->Flink;
+	PrevElem = ListElem->Blink;
+	PrevElem->Flink = NextElem;
+	NextElem->Blink = PrevElem;
+
+	return (BOOL)(NextElem == PrevElem);
+}
+
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+VOID
+vRtlListInsertHeadElem(KLIST_HEAD *ListHead, KLIST_ELEM *ListElem)
+{
+
+}
+
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+VOID
+vRtlListInsertTailElem(KLIST_HEAD *ListHead, KLIST_ELEM *ListElem)
+{
+
+}
+
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+KLIST_ELEM *
+vRtlListRemoveHeadElem(KLIST_HEAD *ListHead)
+{
+	return NULL;
+}
+
+/*!
+********************************************************************************
+* @brief :
+*
+* @param :
+*
+* @retval:
+*******************************************************************************/
+FORCEINLINE
+KLIST_ELEM *
+vRtlListRemoveTailElem(KLIST_HEAD *ListHead)
+{
+	return NULL;
+}
+
+/*!
+********************************************************************************
 * PUBLIC FUNCTIONS
 *******************************************************************************/
 

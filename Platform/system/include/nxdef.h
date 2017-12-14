@@ -28,6 +28,10 @@ extern "C" {
 ********************************************************************************
 * CONTANTS
 *******************************************************************************/
+#ifndef FORCEINLINE
+#define FORCEINLINE	static inline
+#endif
+
 //
 // boolean macro defines.
 //
@@ -77,7 +81,15 @@ typedef	unsigned	long	long	UINT64;
 typedef	unsigned	char			KIRQL;
 typedef	unsigned	char			KPRIORITY;
 
-
+//
+// double list data type define.
+//
+struct _KLIST_ELEM
+{
+	struct _KLIST_ELEM *Flink;
+	struct _KLIST_ELEM *Blink;
+};
+typedef struct _KLIST_ELEM KLIST_HEAD, KLIST_ELEM;
 
 /*!
 ********************************************************************************
